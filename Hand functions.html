@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0046)https://tsarikovich.github.io/RSigns/jopa.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" async="" src="./Hand functions_files/ga.js.Без названия"></script><script type="text/javascript" async="" src="./Hand functions_files/ga.js(1).Без названия"></script><script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-33108845-1']);
+  _gaq.push(['_setDomainName', 'opencv.org']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+  
+    
+    
+    <title>Hand functions</title>
+    <link rel="stylesheet" href="./Hand functions_files/default.css" type="text/css">
+    <link rel="stylesheet" href="./Hand functions_files/pygments.css" type="text/css">
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../../',
+        VERSION:     '2.4.13.7',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="./Hand functions_files/jquery.js.Без названия"></script>
+    <script type="text/javascript" src="./Hand functions_files/underscore.js.Без названия"></script>
+    <script type="text/javascript" src="./Hand functions_files/doctools.js.Без названия"></script>
+    <link rel="top" title="OpenCV 2.4.13.7 documentation" href="https://docs.opencv.org/2.4/index.html">
+    <link rel="up" title="highgui. High-level GUI and Media I/O" href="https://docs.opencv.org/2.4/modules/highgui/doc/highgui.html">
+    <link rel="next" title="Qt New Functions" href="https://docs.opencv.org/2.4/modules/highgui/doc/qt_new_functions.html">
+    <link rel="prev" title="User Interface" href="https://docs.opencv.org/2.4/modules/highgui/doc/user_interface.html"> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        
+        <li class="right">
+          <a title="Qt New Functions" accesskey="N">next</a> |</li>
+        <li class="right">
+          <a title="User Interface" accesskey="P">previous</a> |</li>
+        <li><a href="https://docs.opencv.org/index.html">RSign online documentation</a> »</li>
+          
+           
+      </ul>
+    </div>  
+
+    <div class="document">
+  
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="reading-and-writing-images-and-video">
+<h1>Segmentation<a class="headerlink" href="https://docs.opencv.org/2.4/modules/highgui/doc/reading_and_writing_images_and_video.html?highlight=imwrite#reading-and-writing-images-and-video" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="imdecode">
+<h2>Colour extracting<a class="headerlink" href="https://docs.opencv.org/2.4/modules/highgui/doc/reading_and_writing_images_and_video.html?highlight=imwrite#imdecode" title="Permalink to this headline">¶</a></h2>
+<p>First algorithm that comes in "Contact" - segmentation algorithm. There are few functions which deal with it. First of them is extracting image by colour.
+</p>
+
+
+<p><b>Colour_extract(img, colour1L, colour1R,
+                        colour2L, colour2R)</b></p><p> This function makes extracting image by colour and return a mask. First arg is image to do extract in, and then boundary parametrs of colour to range in. As default it search in red-colour range.</p>
+
+
+
+<h2>Clear noize<a class="headerlink" href="https://docs.opencv.org/2.4/modules/highgui/doc/reading_and_writing_images_and_video.html?highlight=imwrite#imdecode" title="Permalink to this headline">¶</a></h2>
+
+<p>The second algorithm helps first to clear all things, that accidentally came in the image
+</p>
+
+<p><b>Clear_noize(img)</b></p><p>The function takes image and do contour search. After that it removes all the contours except the biggest one.</p>
+    
+
+<h2>Extracting hand gesture<a class="headerlink" href="https://docs.opencv.org/2.4/modules/highgui/doc/reading_and_writing_images_and_video.html?highlight=imwrite#imdecode" title="Permalink to this headline">¶</a></h2>
+<p>And the main algorithm - extract gesture. It uses that two functions upper and return img containing mask of gesture
+</p>
+
+
+<p><b>extract_gesture(img, L1, R1, L2, R2)</b></p><p> It also needs parametrs to range in for colour.</p>
+</div>
+    
+<h1>Data Base<a class="headerlink" href="https://docs.opencv.org/2.4/modules/highgui/doc/reading_and_writing_images_and_video.html?highlight=imwrite#reading-and-writing-images-and-video" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="imdecode">
+<h2>Static gesture creating<a class="headerlink" href="https://docs.opencv.org/2.4/modules/highgui/doc/reading_and_writing_images_and_video.html?highlight=imwrite#imdecode" title="Permalink to this headline">¶</a></h2>
+<p>This functions can help easily create a huge dataset for several minute with your notebook and a camera.
+</p>
+
+
+<p><b>Create_static(path, end, l1, r1, l2, r2, imgsize = 224)</b></p><p>Path - the place where images will be saved. End - the number saved images after which program will be finished automatically, imgsize - the shape of image and other parametrs the same as in functions upper. </p>
+
+
+
+<h2>Dinamic gesture creating<a class="headerlink" href="https://docs.opencv.org/2.4/modules/highgui/doc/reading_and_writing_images_and_video.html?highlight=imwrite#imdecode" title="Permalink to this headline">¶</a></h2>
+
+<p>The process of creating dinamic getures is about the same as in static except few features. The set of images is saving as one senquence if one directory.
+</p>
+
+<p><b>Create_dinamic(path, end, l1, r1, l2, r2, imgsize = 50)</b></p><p>Path - the place where images will be saved. End - the number saved images after which program will be finished automatically, imgsize - the shape of image and other parametrs the same as in functions upper. </p>
+
+<h1>Safe Dinamic Algorithm<a class="headerlink" href="https://docs.opencv.org/2.4/modules/highgui/doc/reading_and_writing_images_and_video.html?highlight=imwrite#reading-and-writing-images-and-video" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="imdecode">
+<h2>Create gesture<a class="headerlink" href="https://docs.opencv.org/2.4/modules/highgui/doc/reading_and_writing_images_and_video.html?highlight=imwrite#imdecode" title="Permalink to this headline">¶</a></h2>
+<p>The function returns the sum  of few images as one summar image.
+</p>
+  
+<p><b>Create_gesture(mas, imgsize)</b></p>
+    <p>Mas - list of images to plus up, imgsize - the size of resulting image.</p></div></div></div>
+
+
+          </div>
+          <div class="feedback">
+              <h2>Help and Feedback</h2>
+              You did not find what you were looking for?
+              <ul>
+                  
+                  
+                  
+                  <li>Ask a question on the <a href="https://vk.com/tsarykovich">CEO Artur</a>.</li>
+                  <li>If you think something is missing or wrong in the documentation,
+                  please write <a href="https://vk.com/tsarykovich">him
+</a>.</li>
+              </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="sphinxsidebar">
+        
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        
+        <li class="right">
+          <a title="Qt New Functions">next</a> |</li>
+        <li class="right">
+          <a title="User Interface">previous</a> |</li>
+        <li><a href="https://docs.opencv.org/index.html">RSign documentation</a> »</li>
+          
+           
+      </ul>
+    </div>
+    <div class="footer">
+        © Copyright 2011-2014, opencv dev team.
+      Last updated on Dec 31, 2019.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.6.
+    </div>
+  
+
+</body></html>
